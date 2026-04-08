@@ -1,87 +1,87 @@
-﻿# 📁 Gerenciador de Arquivos (Electron)
+# 📁 File Manager (Electron)
 
-Um explorador de arquivos desktop desenvolvido com **Electron**, com foco em simplicidade, usabilidade e segurança.  
-O projeto demonstra a integração entre tecnologias web e o sistema de arquivos do sistema operacional utilizando **Node.js**.
+A desktop file explorer built with **Electron**, focused on simplicity, usability, and security.  
+This project demonstrates the integration between web technologies and the operating system's file system using **Node.js**.
 
 ---
 
-## Funcionalidades
+## ✨ Features
 
 ### Interface
-- **Exibição de Caminho**  
-  Mostra o diretório atual em tempo real.
+- **Path Display**  
+  Shows the current directory in real time.
 
-- **Listagem Dinâmica**  
-  Exibe automaticamente arquivos e pastas do diretório selecionado.
+- **Dynamic Listing**  
+  Automatically displays files and folders from the selected directory.
 
-- **Identificação Visual**  
-  Diferencia arquivos e pastas por ícones ou estilos.
+- **Visual Identification**  
+  Differentiates files and folders using icons or styles.
 
-- **Navegação entre Pastas**  
-  Permite acessar subdiretórios com um clique.
+- **Folder Navigation**  
+  Allows access to subdirectories with a single click.
 
-- **Navegação de Retorno**  
-  Botão para voltar ao diretório anterior.
+- **Back Navigation**  
+  Button to return to the parent directory.
 
-- **Atualização Automática**  
-  A lista é atualizada sempre que o diretório muda.
+- **Auto Update**  
+  The file list updates whenever the directory changes.
 
-- **Visualizador de Arquivos**  
-  Suporte para leitura de arquivos `.txt` e `.json`.
-
----
-
-## Arquitetura e Segurança
-
-- **Comunicação IPC**  
-  Uso de `ipcMain` e `ipcRenderer` com isolamento de contexto.
-
-- **Módulo FS (File System)**  
-  Manipulação de arquivos feita no processo principal.
-
-- **Módulo Path**  
-  Garantia de compatibilidade entre diferentes sistemas operacionais.
-
-- **Gestão de Estado**  
-  Controle do diretório atual no processo de renderização.
-
-- **Tratamento de Erros**  
-  Lida com permissões inválidas e caminhos inexistentes.
+- **File Viewer**  
+  Supports reading `.txt` and `.json` files.
 
 ---
 
-## 🏗️ Estrutura do Projeto
+## 🔐 Architecture and Security
+
+- **IPC Communication**  
+  Uses `ipcMain` and `ipcRenderer` with context isolation.
+
+- **FS Module (File System)**  
+  File handling is performed in the main process.
+
+- **Path Module**  
+  Ensures cross-platform compatibility.
+
+- **State Management**  
+  Controls the current directory in the renderer process.
+
+- **Error Handling**  
+  Handles permission issues and invalid paths.
+
+---
+
+## 🏗️ Project Structure
 
 ```
-📦 projeto
-├── main.js        # Processo principal (Node.js)
-├── preload.js     # Ponte segura (IPC)
-├── renderer.js    # Lógica da interface
-├── index.html     # Estrutura da aplicação
-├── style.css      # Estilização 
+📦 project
+├── main.js        # Main process (Node.js)
+├── preload.js     # Secure bridge (IPC)
+├── renderer.js    # Interface logic
+├── index.html     # App structure
+├── style.css      # Styling (dark mode)
 └── package.json
 ```
 
 ---
 
-## 🚀 Como Executar
+## 🚀 Getting Started
 
-### Pré-requisitos
-- Node.js instalado
+### Prerequisites
+- Node.js installed
 
-### Instalação
+### Installation
 
 ```bash
 npm install
 ```
 
-Se estiver criando do zero:
+If starting from scratch:
 
 ```bash
 npm install electron --save-dev
 ```
 
-### Execução
+### Run
 
 ```bash
 npm start
@@ -89,7 +89,7 @@ npm start
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Technologies Used
 
 - Electron.js  
 - Node.js (`fs`, `path`)  
@@ -99,7 +99,7 @@ npm start
 
 ---
 
-## 📌 Boas Práticas com Git
+## 📌 Git Best Practices
 
 ```bash
 node_modules/
@@ -107,9 +107,9 @@ node_modules/
 
 ---
 
-## 🎯 Objetivo do Projeto
+## 🎯 Project Purpose
 
-- Praticar aplicações desktop com Electron  
-- Entender comunicação entre processos (Main ↔ Renderer)  
-- Trabalhar com manipulação de arquivos no sistema operacional  
-- Aplicar conceitos de segurança em aplicações desktop  
+- Practice building desktop applications with Electron  
+- Understand communication between processes (Main ↔ Renderer)  
+- Work with the operating system's file system  
+- Apply security best practices in desktop applications  
