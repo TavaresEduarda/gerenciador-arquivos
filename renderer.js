@@ -31,7 +31,19 @@ async function loadDir(targetPath) {
     });
 }
 
+async function displayFile(filePath) {
+    const content = await window.api.readFile(filePath);
+    contentDiv.innerText = content;
+}
 
+// Botão Voltar (Requisito 5)
+document.getElementById('back-btn').onclick = () => {
+    const parts = currentPath.split(/[\\/]/);
+    if (parts.length > 1) {
+        parts.pop();
+        loadDir(parts.join('/') || '/');
+    }
+};
 
 // Inicialização
 loadDir(currentPath);
