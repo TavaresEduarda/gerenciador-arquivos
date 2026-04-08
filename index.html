@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gerenciador de Arquivos</title>
+    <title>Nano Explorer</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Gerenciador de Arquivos</h1>
-    <div id="file-list"></div>
+    <div class="app-container">
+        <header class="toolbar">
+            <button id="back-btn" title="Voltar">
+                <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0a8 8 0 1 0 0 16A8 8 0 0 0 8 0zm3.5 7.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5z"/>
+                </svg>
+            </button>
+            <div id="current-path" class="path-bar">Carregando...</div>
+        </header>
+
+        <main class="content-area">
+            <section class="sidebar">
+                <ul id="file-list"></ul>
+            </section>
+
+            <section class="viewer">
+                <div class="viewer-header">Conteúdo do Arquivo</div>
+                <pre id="content">Selecione um arquivo .txt ou .json para visualizar...</pre>
+            </section>
+        </main>
+    </div>
 
     <script src="renderer.js"></script>
 </body>
 </html>
-
-

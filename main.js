@@ -1,41 +1,47 @@
 const { app, BrowserWindow, ipcMain } = require('electron')
 const fs = require('fs')
-const path = require('node:path')
+const path = require('path')
 
-
-const createWindow = () => {
+function createWindow() {
   const win = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1100,
+    height: 700,
     webPreferences: {
-      preload: path.join(__dirname, 'preload.js')
-      
+      preload: path.join(__dirname, 'preload.js'),
+      contextIsolation: true,
+      nodeIntegration: false
     }
   })
+
   win.loadFile('index.html')
 }
-app.whenReady().then(() => {
-  ipcMain.handle('ping', () => 'pong')
-  createWindow()
-})   
-
-// Registra o canal 'listar-arquivos'
-ipcMain.handle('listar-arquivos', async (event, caminho) => {
-  const itens = fs.readdirSync(caminho)
-
-  return itens.map(nome => {
-    const caminhoCompleto = path.join(caminho, nome)
-    const stat = fs.statSync(caminhoCompleto)
-
-    return {
-      name: nome,
-      fullPath: caminhoCompleto,
-      isDirectory: stat.isDirectory()
-    }
-  })
-})
 
 
-ipcMain.handle('ler-arquivo', async (event, caminho) => {
-  return fs.readFileSync(caminho, 'utf-8')
+// Canal: listar arquivos de um diretório
+ipcMain.handle('read-dir', async (event, targetPath) => {
+  try {
+    const files = fs.readdirSync(targetPath, { withFileTypes: true });
+    return files.map(file => ({
+      name: file.name,
+      isDirectory: file.isDirectory(),
+      path: path.join(targetPath, file.name)
+    }));
+  } catch (err) {
+    return { error: "Pasta inexistente ou sem permissão" };
+  }
+});
+
+// IPC para ler conteúdo de arquivo (Requisito 7)
+ipcMain.handle('read-file', async (event, filePath) => {
+  const ext = path.extname(filePath).toLowerCase();
+  if (ext === '.txt' || ext === '.json') {
+    return fs.readFileSync(filePath, 'utf-8');
+  }
+  return "Formato não suportado.";
+});
+
+app.whenReady().then(createWindow)
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') app.quit()
 })

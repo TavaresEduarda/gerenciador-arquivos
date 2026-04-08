@@ -1,6 +1,7 @@
 const { contextBridge, ipcRenderer } = require('electron')
 
 contextBridge.exposeInMainWorld('api', {
-  listarArquivos: (caminho) => ipcRenderer.invoke('listar-arquivos', caminho),
-  lerArquivo: (caminho) => ipcRenderer.invoke('ler-arquivo', caminho)
+  readDir: (path) => ipcRenderer.invoke('read-dir', path),
+  readFile: (path) => ipcRenderer.invoke('read-file', path),
+  homeDir: () => process.env.HOME || process.env.USERPROFILE
 })
