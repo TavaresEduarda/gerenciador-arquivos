@@ -15,6 +15,9 @@ async function loadDir(targetPath) {
     pathDisplay.innerText = `Caminho: ${currentPath}`;
     fileList.innerHTML = '';
 
+// LINHA IMPORTANTE: Limpa o texto ao navegar
+    contentDiv.innerText = 'Selecione um arquivo .txt ou .json para visualizar...';
+
     data.forEach(item => {
         const li = document.createElement('li');
         li.innerText = item.isDirectory ? `📁 ${item.name}` : `📄 ${item.name}`;

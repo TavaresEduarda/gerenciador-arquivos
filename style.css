@@ -1,0 +1,148 @@
+/* Reset total para evitar estilos padrão do navegador */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Container Principal */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+/* Barra de Ferramentas (Topo) */
+.toolbar {
+    height: 50px;
+    background-color: #161b22;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    border-bottom: 1px solid #30363d;
+    gap: 15px;
+}
+
+#back-btn {
+    background: #21262d;
+    border: 1px solid #30363d;
+    color: #c9d1d9;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#back-btn:hover {
+    background-color: #30363d;
+    border-color: #8b949e;
+}
+
+.path-bar {
+    font-family: 'Consolas', monospace;
+    font-size: 13px;
+    background: #010409;
+    padding: 6px 12px;
+    border-radius: 4px;
+    border: 1px solid #30363d;
+    flex-grow: 1;
+    color: #8b949e;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Área de Conteúdo (Meio) */
+.content-area {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* Barra Lateral (Lista de Arquivos) */
+.sidebar {
+    width: 280px;
+    background-color: #0d1117;
+    border-right: 1px solid #30363d;
+    overflow-y: auto;
+}
+
+#file-list {
+    list-style: none;
+}
+
+#file-list li {
+    padding: 10px 15px;
+    font-size: 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #21262d;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: background 0.2s;
+}
+
+#file-list li:hover {
+    background-color: #161b22;
+}
+
+/* Estilos para os tipos de arquivos definidos via JS */
+.folder { color: #d29922; font-weight: bold; }
+.file { color: #58a6ff; }
+
+/* Visualizador (Direita) */
+.viewer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #0d1117;
+}
+
+.viewer-header {
+    background-color: #161b22;
+    padding: 8px 15px;
+    font-size: 12px;
+    color: #8b949e;
+    border-bottom: 1px solid #30363d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#content {
+    flex: 1;
+    margin: 0;
+    padding: 20px;
+    font-family: 'Consolas', 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.6;
+    overflow: auto;
+    color: #d1d5db;
+    background-color: #0d1117;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+/* Personalização da Scrollbar (Chrome/Electron) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #484f58;
+}
